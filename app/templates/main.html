@@ -1,0 +1,28 @@
+{% extends "main_layout.html" %}
+
+{% block currency %}
+
+  <p class="lead">Information on date: {{ currency_latest_update }}</p>
+  <table style="border:none;">
+  {% for i in currency.items() %}  
+    <tr>
+      <td>{{ i[0] }}/RUB: </td>
+      <td>{{ i[1].get('Value') }}</td>
+    </tr>    
+  {% endfor %}
+  </table>
+  
+{% endblock currency %}
+
+{% block covid %}
+
+  <p class="lead">Information on today:</p>
+  <table>    
+  {% for i in covid %} 
+    <tr>
+      <td>{{ i['attributes']['Country_Region'] }}</td>
+    </tr> 
+  {% endfor %}
+  </table>
+
+{% endblock covid%}

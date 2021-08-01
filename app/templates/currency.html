@@ -1,0 +1,19 @@
+{% extends "plots_layout.html" %}
+
+{% block content %}
+	
+
+	<div class="container">			
+
+		<h3 style="font-weight: 100%;">Currency trends</h3>
+
+		<div id="chart" class="chart"></div>
+
+	</div>
+
+	<script type="text/javascript">
+		var graphs = {{ currency_plots_json|safe }};
+		Plotly.plot('chart', graphs, {});
+	</script>
+
+{% endblock content %}

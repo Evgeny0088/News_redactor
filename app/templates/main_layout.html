@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+		<meta name="generator" content="Hugo 0.83.1">
+		{% if title %}
+			<title>News:{{ title }}</title>
+		{% else %}
+			<title>News:home page</title>
+		{% endif %}
+		<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+		<!-- Bootstrap core CSS -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<style>
+		.image_placeholder{
+	 background: url('loading.gif') no-repeat;
+	 width:500px;
+	 height:500px;
+	}
+	</style>
+
+		<!-- Custom styles for this template -->
+				<link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename = 'carousel.rtl.css') }}">
+	</head>
+
+<body>
+
+<header>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{{ url_for('main.index') }}">News</a>
+		</div>
+	</nav>
+</header>
+
+<main>
+		<!-- currency section -->
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h3 class="featurette-heading">Currency rates today.<span class="text-muted">Latest information from center bank.</span></h3>
+				{% block currency %}{% endblock currency %}
+			</div>
+			<div class="col-md-5">
+				<img class = "image_placeholder" src="{{ url_for('static', filename='currency_label.jpg') }}">
+				<p><a class="btn btn-secondary" href="{{ url_for('currency_news.currency_route') }}">View details &raquo;</a></p>
+			</div>
+		</div>
+
+		<!-- covid section -->
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h3 class="featurette-heading">Daily covid news.<span class="text-muted">Top 5 most deaths countries</span></h3>
+				{% block covid %}{% endblock covid%}
+			</div>
+			<div class="col-md-5">
+				<img class = "image_placeholder" src="{{ url_for('static', filename='covid_label.jpg') }}">
+				<p><a class="btn btn-secondary" href="{{ url_for('covid_news.covid_route') }}">View details &raquo;</a></p>
+			</div>
+		</div>
+	</div>
+
+		<!-- /END THE FEATURETTES -->
+
+	<!-- FOOTER -->
+	<footer class="container">
+		<p class="float-end"><a href="#">Back to top</a></p>
+		<p>&copy; 2017–2021 Company, Inc. &middot; <a href="{{ url_for('main.about') }}">About</a> &middot; <a href="#">Terms</a></p>
+	</footer>
+	</main>
+	</body>
+</html>

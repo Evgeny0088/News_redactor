@@ -1,0 +1,49 @@
+{% extends "plots_layout.html" %}
+
+{% block content %}
+	
+	<!-- DEATHS CHART HERE -->
+	<div class="container">
+
+		<h3 style="font-weight: 100%;">Top 5 covid deaths chart</h3>
+
+	<div id="deaths_bar" class="chart"></div>
+
+	</div>
+
+	<!-- ACTIVE CHART HERE -->
+
+	<div class="container">
+
+		<h3 style="font-weight: 100%;">Top 5 covid active cases chart</h3>
+
+	<div id="active_scatter" class="chart"></div>
+
+	</div>
+
+	<!-- CONFIRMED CHART HERE -->
+
+	<div class="container">
+
+		<h3 style="font-weight: 100%;">Top 5 covid confirmed cases chart</h3>
+
+	<div id="confirmed_scatter" class="chart"></div>
+
+	</div>
+
+	<script type="text/javascript">
+		var graphs = {{ covid_deaths_json|safe }};
+		Plotly.plot('deaths_bar', graphs, {});        
+	</script>
+
+	<script type="text/javascript">
+		var graphs = {{ covid_active_json|safe }};
+		Plotly.plot('active_scatter', graphs, {});   
+	</script>
+
+	<script type="text/javascript">
+		var graphs = {{ covid_confirmed_json|safe }};
+		Plotly.plot('confirmed_scatter', graphs, {});
+	</script>
+
+{% endblock content %}
