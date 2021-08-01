@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  app:
+    build: https://github.com/Evgeny0088/News_redactor.git#master:app
+    dockerfile: Dockerfile.remote
+    container_name: news
+    ports:
+      - 5000:5000
+    links:
+      - db
+    restart: always
+  db:
+    image: mysql/mysql-server:latest
+    container_name: news_db
+    ports:
+      - 3307:3306
+    volumes:
+      - ./db_data:/var/lib/mysql
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=News_redactor
+      - MYSQL_USER=evgeny88
+      - MYSQL_PASSWORD=Primera77!
+      - MYSQL_HOST=0.0.0.0
+    restart: always
