@@ -2,20 +2,18 @@ FROM python:3.8
 
 RUN adduser --disabled-password --gecos "" redactor
 
-RUN mkdir -p /home/redactor/redactor_app/app/
+RUN mkdir -p /home/app/
 
-RUN git clone https://github.com/Evgeny0088/News_redactor.git#master:app \
-								/home/redactor/redactor_app/app/
+RUN git clone -b master https://github.com/Evgeny0088/News_redactor.git\
+								/home/app/
 
-WORKDIR /home/redactor/redactor_app/
+WORKDIR /home/app/News_redactor/app/
 
 RUN chown -R redactor:redactor ./
 
 RUN pip install -r app/requirements.txt
 
 RUN pip install gunicorn
-
-WORKDIR /home/redactor/redactor_app/app/
 
 RUN chmod +x boot.sh
 
