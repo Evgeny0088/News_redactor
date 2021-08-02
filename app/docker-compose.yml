@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   app:
-    build: https://<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>:x-oauth-basic@github.com/Evgeny0088/News_redactor.git#master:app
+    build: https://github.com/Evgeny0088/News_redactor.git#master:app
     dockerfile: Dockerfile.remote
     container_name: news
     ports:
