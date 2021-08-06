@@ -4,11 +4,11 @@ RUN adduser --disabled-password --gecos "" redactor
 
 RUN mkdir -p /home/app/
 
-RUN git clone https://github.com/Evgeny0088/News_redactor.git home/app/
-
 WORKDIR /home/app/
 
 RUN chown -R redactor:redactor ./
+
+RUN git clone https://github.com/Evgeny0088/News_redactor.git home/app/
 
 WORKDIR /home/app/News_redactor/app/
 
