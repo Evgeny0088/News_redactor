@@ -1,0 +1,25 @@
+FROM python:3.8
+
+RUN adduser --disabled-password --gecos "" redactor
+
+RUN mkdir -p /home/redactor/redactor_app/app/
+
+COPY . /home/redactor/redactor_app/app/
+
+WORKDIR /home/redactor/redactor_app/
+
+RUN chown -R redactor:redactor ./
+
+RUN pip install -r app/requirements.txt
+
+RUN pip install gunicorn
+
+WORKDIR /home/redactor/redactor_app/app/
+
+RUN chmod +x boot.sh
+
+USER redactor
+
+EXPOSE 5000
+
+ENTRYPOINT ["./boot.sh"]
