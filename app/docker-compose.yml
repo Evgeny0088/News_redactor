@@ -1,8 +1,9 @@
 version: "3.3"
 services:
   app:
-    build: .
-    dockerfile: Dockerfile.origin
+    build:
+      context: .
+      dockerfile: Dockerfile.origin
     container_name: news
     ports:
       - 5000:5000
